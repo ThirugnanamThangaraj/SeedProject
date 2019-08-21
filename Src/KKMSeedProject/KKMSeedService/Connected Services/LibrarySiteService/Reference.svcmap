@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c604f544-b4ba-41cf-b6a1-f265ba66be04" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://devwss.merrillbridge.merrillcorp.com/_vti_bin/RivetSiteService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RivetSiteService.wsdl" MetadataType="Wsdl" ID="78cf9a23-67d6-4989-84f1-99b02f30ed34" SourceId="1" SourceUrl="https://devwss.merrillbridge.merrillcorp.com/_vti_bin/RivetSiteService.svc?wsdl" />
+    <MetadataFile FileName="RivetSiteService.disco" MetadataType="Disco" ID="62f87f17-7aed-466e-9591-878c08f06a3b" SourceId="1" SourceUrl="https://devwss.merrillbridge.merrillcorp.com/_vti_bin/RivetSiteService.svc?disco" />
+    <MetadataFile FileName="RivetSiteService.xsd" MetadataType="Schema" ID="fb46d555-8fd1-4e95-8778-b30005456eab" SourceId="1" SourceUrl="https://devwss.merrillbridge.merrillcorp.com/_vti_bin/RivetSiteService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
