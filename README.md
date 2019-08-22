@@ -1,2 +1,2 @@
-# MB-Repository-Service
-MB-Repository-Service
+# Seed Project
+KKM Seed Project
