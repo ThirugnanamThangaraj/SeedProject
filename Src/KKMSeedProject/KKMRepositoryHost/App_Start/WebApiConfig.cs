@@ -10,7 +10,6 @@ namespace MB.Repository.Host
         {
             config.EnableCors();
             // Web API configuration and services
-           
             config.MapHttpAttributeRoutes();
             config.Filters.Add(new ModelValidateAttribute());
             config.MessageHandlers.Add(new TokenValidationHandler());
