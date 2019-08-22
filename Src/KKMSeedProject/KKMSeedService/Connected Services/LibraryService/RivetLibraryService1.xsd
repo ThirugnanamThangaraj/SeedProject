@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://devwss.merrillbridge.merrillcorp.com/_vti_bin/RivetLibraryService.svc?xsd=xsd1" namespace="http://microsoft.com/wsdl/types/" />
+  <xs:element name="DoesFolderExist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="folderRequest" type="tns:FolderRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="FolderRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SharepointRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="FolderHeader" type="tns:FolderHeader" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SharepointRequestBase" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CallerUsername" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CallerPassword" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FolderHeader">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryHeaderBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="IsLibraryRoot" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LibraryHeaderBase" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ObjectRelativeLocation" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MyObjectType" type="tns:ObjectType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CompanyRelativeLocation" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ObjectName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ObjectUniqueKey" type="xs:string" />
+      <xs:element xmlns:q1="http://microsoft.com/wsdl/types/" minOccurs="1" maxOccurs="1" name="TenantID" type="q1:guid" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CreatedByUsername" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DateModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ModifiedByUsername" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DateCreated" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ObjectType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Hopper" />
+      <xs:enumeration value="Hierarchy" />
+      <xs:enumeration value="Calendar" />
+      <xs:enumeration value="LocalFolio" />
+      <xs:enumeration value="DynamicFolio" />
+      <xs:enumeration value="StaticFolio" />
+      <xs:enumeration value="PublishedFolio" />
+      <xs:enumeration value="Taxonomy" />
+      <xs:enumeration value="StructuredKeySet" />
+      <xs:enumeration value="CategoryKeyValues" />
+      <xs:enumeration value="Cube" />
+      <xs:enumeration value="VirtualFolio" />
+      <xs:enumeration value="TaxonomyPresentationHierarchy" />
+      <xs:enumeration value="PartialTaxonomyPresentationHierarchy" />
+      <xs:enumeration value="Security" />
+      <xs:enumeration value="SecurityUser" />
+      <xs:enumeration value="SecurityGroup" />
+      <xs:enumeration value="Category" />
+      <xs:enumeration value="KeyValueList" />
+      <xs:enumeration value="XBRLGLTransactions" />
+      <xs:enumeration value="Folder" />
+      <xs:enumeration value="Template" />
+      <xs:enumeration value="Project" />
+      <xs:enumeration value="Entity" />
+      <xs:enumeration value="TaxonomySchema" />
+      <xs:enumeration value="FilingPackage" />
+      <xs:enumeration value="SourceDocument" />
+      <xs:enumeration value="ReportTemplate" />
+      <xs:enumeration value="PublishedReport" />
+      <xs:enumeration value="EntityNode" />
+      <xs:enumeration value="KeyPerformanceIndex" />
+      <xs:enumeration value="Rule" />
+      <xs:enumeration value="RuleHeader" />
+      <xs:enumeration value="DEIDocument" />
+      <xs:enumeration value="ReviewersGuide" />
+      <xs:enumeration value="FolioMap" />
+      <xs:enumeration value="TaxonomyCalculationHierarchy" />
+      <xs:enumeration value="FolioChangeset" />
+      <xs:enumeration value="FilteredByPrefixKeyValueList" />
+      <xs:enumeration value="KpiKeyValueList" />
+      <xs:enumeration value="WordFolio" />
+      <xs:enumeration value="WordLocalFolio" />
+      <xs:enumeration value="ExcelFolio" />
+      <xs:enumeration value="Image" />
+      <xs:enumeration value="NativeWord" />
+      <xs:enumeration value="NativeExcel" />
+      <xs:enumeration value="DimensionByEntity" />
+      <xs:enumeration value="FilingBundle" />
+      <xs:enumeration value="FilingBundleContainer" />
+      <xs:enumeration value="FilingBundleXBRLPackage" />
+      <xs:enumeration value="FilingBundleXBRLPreview" />
+      <xs:enumeration value="FilingBundleTaxonomyComparison" />
+      <xs:enumeration value="FilingBundleInstanceComparison" />
+      <xs:enumeration value="FilingBundleValidation" />
+      <xs:enumeration value="FilingBundleEdgarHtml" />
+      <xs:enumeration value="LinkToExhibit" />
+      <xs:enumeration value="PDF" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="FilingBundleHeader">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryHeaderBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RuleHeader">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryHeaderBase">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://microsoft.com/wsdl/types/" minOccurs="1" maxOccurs="1" name="RuleId" type="q2:guid" />
+          <xs:element xmlns:q3="http://microsoft.com/wsdl/types/" minOccurs="1" maxOccurs="1" name="CompanyId" type="q3:guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CategoryId" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RuleName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RuleDescription" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RuleCategory" type="tns:RuleCategory" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RuleTags" type="tns:TagsList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RuleCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="RuleCategoryName" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="RuleCategoryDisplaySeq" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TagsList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="XmlSerializtionOnly" type="tns:ArrayOfString" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EntityHeader">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryHeaderBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="Version" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MyEntityKey" type="tns:EntityKey" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MyFolderPath" type="xs:string" />
+          <xs:element xmlns:q4="http://microsoft.com/wsdl/types/" minOccurs="1" maxOccurs="1" name="DefaultTemplate" type="q4:guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntityKey">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Schema" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FriendlyName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element xmlns:q5="http://microsoft.com/wsdl/types/" minOccurs="1" maxOccurs="1" name="Id" type="q5:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SourceDocumentHeader">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryHeaderBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LibraryObjectHeader">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryHeaderBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DoesFolderExistResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="DoesFolderExistResult" type="tns:ResponseBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ResponseBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Header" type="tns:ResponseHeader" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponseHeader">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Messages" type="tns:ArrayOfMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Message">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Type" type="tns:MessageType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Tag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="MessageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Info" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="Timing" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CreateFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="folderRequest" type="tns:FolderRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="CreateFolderResult" type="tns:ResponseBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFolderAsWorkspace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="workspaceRequest" type="tns:WorkspaceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="WorkspaceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FolderRequest">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://microsoft.com/wsdl/types/" minOccurs="1" maxOccurs="1" name="workspaceGuid" type="q6:guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateFolderAsWorkspaceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="CreateFolderAsWorkspaceResult" type="tns:ResponseBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConvertFolderToWorkspace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="workspaceRequest" type="tns:WorkspaceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConvertFolderToWorkspaceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ConvertFolderToWorkspaceResult" type="tns:ResponseBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="folderRequest" type="tns:FolderRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="DeleteFolderResult" type="tns:ResponseBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkspaceFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="folderRequest" type="tns:FolderRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkspaceFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="DeleteWorkspaceFolderResult" type="tns:ResponseBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLibrary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="libRequest" type="tns:LibraryRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="LibraryRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SharepointRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="TopLevelFolderLocation" type="tns:FolderHeader" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Types" type="tns:ArrayOfObjectType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Recursive" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ShowFileExtension" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="UserName" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IncludeFolders" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IncludeWorkspaces" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfObjectType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ObjectType" type="tns:ObjectType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CategoryKey">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="CategoryId" type="xs:unsignedShort" />
+      <xs:element minOccurs="1" maxOccurs="1" name="AauId" type="xs:unsignedByte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ObjectInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="CB" type="tns:UserKey" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MB" type="tns:UserKey" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DC" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DM" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UserKey">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="MI" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UN" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="AT" type="tns:ApplicationType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ClientIp" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ApplicationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Designer" />
+      <xs:enumeration value="Library" />
+      <xs:enumeration value="MDMAdmin" />
+      <xs:enumeration value="MDMServer" />
+      <xs:enumeration value="BatchLoader" />
+      <xs:enumeration value="CrossfirePortal" />
+      <xs:enumeration value="AAPServer" />
+      <xs:enumeration value="PublishingAgentDesigner" />
+      <xs:enumeration value="CMC" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="NuggetKey">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GenericHierarchy">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="XmlSerializationOnlyNextNodeId" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NodeXmlSerializerHelper" type="tns:NodeCollectionXmlSerializer" />
+      <xs:element minOccurs="1" maxOccurs="1" name="RootId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NodeCollectionXmlSerializer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Nodes" type="tns:ArrayOfNode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfNode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Node" nillable="true" type="tns:Node" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Node">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ChildrenIds" type="tns:ArrayOfInt" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ParentId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfInt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="int" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LibraryNode" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Node">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MNI" type="tns:NuggetInfo" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MOI" type="tns:ObjectInfo" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MyHeaderInfo" type="tns:LibraryHeaderBase" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="NuggetInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryHeaderBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="NK" type="tns:NuggetKey" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MOT" type="tns:ObjectType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AauId" type="xs:unsignedByte" />
+          <xs:element minOccurs="1" maxOccurs="1" name="VER" type="xs:unsignedShort" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CI" type="xs:unsignedShort" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DESC" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MOI" type="tns:ObjectInfo" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IV" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ID" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MyCategoryKeys" type="tns:ArrayOfCategoryKey" />
+          <xs:element minOccurs="1" maxOccurs="1" name="HasRelativeDates" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IRO" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IR" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FN" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TT" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SUB" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CAT" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="KWS" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="COM" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfCategoryKey">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoryKey" type="tns:CategoryKey" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FolderNode">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryNode">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="IsLibraryRoot" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FriendlyName" type="xs:string" />
+          <xs:element xmlns:q7="http://microsoft.com/wsdl/types/" minOccurs="1" maxOccurs="1" name="WorkspaceId" type="q7:guid" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MyFolderType" type="tns:FolderType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="FolderType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Workspace" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataObjectNode">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryNode" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PublishedFolioNode">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataObjectNode" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TaxonomyNode">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataObjectNode">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="LOC" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="DT" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LR" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LAN" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="VS" type="tns:ValidationStatus" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TN" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PTN" type="tns:ArrayOfString1" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TF" type="tns:ArrayOfString2" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IU" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TNS" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="NSP" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsWebBased" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ValidationStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNDEFINED" />
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="WARNING" />
+      <xs:enumeration value="ERROR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ArrayOfString1">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PTN1" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfString2">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TF1" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CrossfireLibrary">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GenericHierarchy" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetLibraryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetLibraryResult" type="tns:LibraryResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="LibraryResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Library" type="tns:CrossfireLibrary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DoesObjectExist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="libObjectRequest" type="tns:LibraryObjectRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="LibraryObjectRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SharepointRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="LibraryHeaderBase" type="tns:LibraryHeaderBase" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RequireCheckout" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DoesObjectExistResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="DoesObjectExistResult" type="tns:ResponseBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetObjectFromLibrary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="libObjectRequest" type="tns:LibraryObjectRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ObjectKey">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="MyObjectType" type="tns:ObjectType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MyKey" type="tns:NuggetKey" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompressedObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="MyHeaderInfo" type="tns:LibraryHeaderBase" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CompressedByteArray" type="xs:base64Binary" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IsBinarySerialized" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetObjectFromLibraryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetObjectFromLibraryResult" type="tns:LibraryCompressedObjectResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="LibraryCompressedObjectResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="CompressedObject" type="tns:CompressedObject" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SaveObjectToLibrary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="saveObjectRequest" type="tns:SaveObjectRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SaveObjectRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SharepointRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="MyData" type="tns:CompressedObject" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MyLockToken" type="tns:LockToken" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Overwrite" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsNewObject" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CheckIn" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="KeepCheckedOut" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SaveToAAU" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="EncryptObject" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsMinorVersion" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SPSaveComment" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LockToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="MyUserKey" type="tns:UserKey" />
+      <xs:element minOccurs="1" maxOccurs="1" name="GmtLocked" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MyLockInfo" type="tns:LockInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LockInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryHeaderBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="Key" type="tns:NuggetKey" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PublishDataOut">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="MyLockStatus" type="tns:LockStatus" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MyLockToken" type="tns:LockToken" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MyErrorInfo" type="tns:ErrorInfo" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MyResponseType" type="tns:PublishResponseType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExistingObjectInfo" type="tns:LibraryHeaderBase" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MajorVersion" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MinorVersion" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="LockStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="LockedByOtherUser" />
+      <xs:enumeration value="AscendentLockedByOtherUser" />
+      <xs:enumeration value="DescendentLockedByOtherUser" />
+      <xs:enumeration value="ObjectDoesntExist" />
+      <xs:enumeration value="NameAlreadyInUse" />
+      <xs:enumeration value="NotLocked" />
+      <xs:enumeration value="Exception" />
+      <xs:enumeration value="ConnectionFailed" />
+      <xs:enumeration value="MissingDependantObject" />
+      <xs:enumeration value="ReadOnlyObject" />
+      <xs:enumeration value="TaxonomyAlreadyLoaded" />
+      <xs:enumeration value="BuildHierarchyFailed" />
+      <xs:enumeration value="CannotSavePrivateFolioToPublicFolder" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ErrorInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="StringResourceKey" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IsStringKeyFound" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="StringValue" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ParamList" type="tns:ArrayOfAnyType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OriginalErrorMsg" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OriginatingServer" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="TimeStamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExceptionMsg" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="StackTrace" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InnerExceptionMsg" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InnerStackTrace" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DebugStackTrace" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfAnyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="PublishResponseType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="FailureCheckedOutToSomeoneElse" />
+      <xs:enumeration value="FailureCheckOutRequired" />
+      <xs:enumeration value="FailureInvalidDocumentType" />
+      <xs:enumeration value="FailureInvalidItemLocation" />
+      <xs:enumeration value="FailureInvalidParentList" />
+      <xs:enumeration value="FailureNoEncryptionKey" />
+      <xs:enumeration value="FailureNoOverwrite" />
+      <xs:enumeration value="FailureSqlException" />
+      <xs:enumeration value="Failure" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SaveObjectToLibraryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="SaveObjectToLibraryResult" type="tns:SaveObjectResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SaveObjectResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="PublishDataOut" type="tns:PublishDataOut" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckoutObject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="libObjectRequest" type="tns:LibraryObjectRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckoutObjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="CheckoutObjectResult" type="tns:ResponseBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UndoCheckout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="libObjectRequest" type="tns:LibraryObjectRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UndoCheckoutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="UndoCheckoutResult" type="tns:ResponseBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsObjectCheckedOut">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="libObjectRequest" type="tns:LibraryObjectRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsObjectCheckedOutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="IsObjectCheckedOutResult" type="tns:ObjectStatusResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ObjectStatusResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="CheckedOutToUsername" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateObjectState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="updateObjectRequest" type="tns:UpdateObjectRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="UpdateObjectRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SharepointRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ObjectHeaders" type="tns:ArrayOfLibraryObjectRequest" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ModificationInfo" type="tns:ObjectModificationInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfLibraryObjectRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LibraryObjectRequest" nillable="true" type="tns:LibraryObjectRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ObjectModificationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="ValidateWithMDM" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="UpdateMDMWithChanges" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NewFriendlyName" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ReadOnlyChanged" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="RetiredChanged" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="NewReadOnlyFlag" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="NewRetiredFlag" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NewAuditMessages" type="tns:ArrayOfAuditMessage" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IsDeleteRevisonsOnly" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DeleteRevisionsIfFileOlderThan" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MinimumRevisonsToLeave" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SummaryChanged" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Title" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Subject" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Objectcategory" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Keywords" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Comments" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ModifiedBy" type="tns:UserKey" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DateModified" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfAuditMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AuditMessage" nillable="true" type="tns:AuditMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuditMessage">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="EventDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UserName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Message" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="MyEventType" type="tns:EventType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="EventType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ReadOnly" />
+      <xs:enumeration value="Retired" />
+      <xs:enumeration value="Reverse_ReadOnly" />
+      <xs:enumeration value="Reverse_Retired" />
+      <xs:enumeration value="Manual" />
+      <xs:enumeration value="Folio" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UpdateObjectStateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="UpdateObjectStateResult" type="tns:ResponseBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetObjectVersionHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="versionHistoryRequest" type="tns:VersionHistoryRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="VersionHistoryRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="LibraryObjectHeader" type="tns:LibraryObjectHeader" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VersionInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="VersionNumberLabel" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ModifiedBy" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SPSaveComment" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfVersionInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VersionInfo" nillable="true" type="tns:VersionInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetObjectVersionHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetObjectVersionHistoryResult" type="tns:VersionHistoryResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="VersionHistoryResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="VersionInfos" type="tns:ArrayOfVersionInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetObjectVersionFromLibrary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ObjectVersionRequest" type="tns:LibraryObjectVersionRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="LibraryObjectVersionRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryObjectRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="VersionInfo" type="tns:VersionInfo" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RequestType" type="tns:VersionRequestType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="VersionRequestType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="LatestMajor" />
+      <xs:enumeration value="LatestAny" />
+      <xs:enumeration value="SpecificVersion" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GetObjectVersionFromLibraryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetObjectVersionFromLibraryResult" type="tns:LibraryCompressedObjectResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCalendarObjectsFromLibrary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="libObjectsRequest" type="tns:ArrayOfLibraryObjectRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfCompressedObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompressedObject" nillable="true" type="tns:CompressedObject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCalendarObjectsFromLibraryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetCalendarObjectsFromLibraryResult" type="tns:LibraryCompressedObjectsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="LibraryCompressedObjectsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="CompressedObjects" type="tns:ArrayOfCompressedObject" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetTaxonomyHeader">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="header" type="tns:TaxonomyHeader" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="TaxonomyHeader">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LibraryHeaderBase">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://microsoft.com/wsdl/types/" minOccurs="1" maxOccurs="1" name="TaxonomyId" type="q8:guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FriendlyName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Type" type="tns:TaxonomyType" />
+          <xs:element xmlns:q9="http://microsoft.com/wsdl/types/" minOccurs="1" maxOccurs="1" name="BaseId" type="q9:guid" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TaxonomyUrl" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LastModifiedDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BasePath" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SchemaRelativePath" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TaxonomyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Published" />
+      <xs:enumeration value="Internal" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GetTaxonomyHeaderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="GetTaxonomyHeaderResult" type="tns:TaxonomyHeader" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
