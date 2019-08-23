@@ -16,12 +16,12 @@ namespace KKM.Repository.Host.Controllers
     [RoutePrefix("api/User")]
     public class UserController : ApiController
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(UserController));
+        private static readonly ILog log = LogManager.GetLogger(typeof(UserController));
 
         private readonly SeedService _libraryService;
         public UserController(ISeedProject _seedProject)
         {
-            Log.Info("LibraryController Started");
+            log.Info("LibraryController Started");
             _libraryService = new SeedService(_seedProject);
         }
 
@@ -31,7 +31,7 @@ namespace KKM.Repository.Host.Controllers
               var response = _libraryService.GetAll();
             if (!response.IsValid)
             {
-                Log.Info($"api/user/GetAll failed - {response.ErrorMessage}");
+                log.Info($"api/user/GetAll failed - {response.ErrorMessage}");
                 return Request.CreateResponse(HttpStatusCode.BadRequest, $"{response.ErrorMessage}");
             }
             else
@@ -43,7 +43,7 @@ namespace KKM.Repository.Host.Controllers
             var response = _libraryService.GetbyId(id);
             if (!response.IsValid)
             {
-                Log.Info($"api/user/GetAll failed - {response.ErrorMessage}");
+                log.Info($"api/user/GetAll failed - {response.ErrorMessage}");
                 return Request.CreateResponse(HttpStatusCode.BadRequest, $"{response.ErrorMessage}");
             }
             else
