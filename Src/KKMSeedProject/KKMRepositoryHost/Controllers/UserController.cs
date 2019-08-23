@@ -18,7 +18,7 @@ namespace KKM.Repository.Host.Controllers
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(UserController));
 
-        private readonly SeedService _libraryService;
+        private SeedService _libraryService;
         public UserController(ISeedProject _seedProject)
         {
             log.Info("LibraryController Started");
