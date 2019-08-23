@@ -11,11 +11,11 @@ namespace KKM.Repository.Host.Controllers
     [RoutePrefix("api/Token")]
     public class TokenController : ApiController
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(TokenController));
-        private readonly LoginUserService _libraryService;
+        private static readonly ILog log = LogManager.GetLogger(typeof(TokenController));
+        private LoginUserService _libraryService;
         public TokenController(ILoginUser loginUser)
         {
-            Log.Info("LibraryController Started");
+            log.Info("LibraryController Started");
             _libraryService = new LoginUserService(loginUser);
         }
 

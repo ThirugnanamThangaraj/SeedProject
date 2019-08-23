@@ -11,12 +11,12 @@ namespace KKM.Repository.Host.Controllers
     [RoutePrefix("api/Health")]
     public class HealthController : ApiController
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HealthController));
+        private static readonly ILog log = LogManager.GetLogger(typeof(HealthController));
         // GET: Health
         [System.Web.Http.AllowAnonymous]
         public HttpResponseMessage Get()
         {
-            Log.Info("HealthController Get Invoked");
+            log.Info("HealthController Get Invoked");
             return Request.CreateResponse(HttpStatusCode.OK, DateTime.UtcNow);
         }
     }

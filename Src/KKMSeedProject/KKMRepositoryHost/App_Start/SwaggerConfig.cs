@@ -12,11 +12,11 @@ namespace KKM.Repository.Host
 {
     public static class SwaggerConfig
     {
-        //private static string _EnableSwagger = Configurat.("EnableSwagger");
+        private static string _EnableSwagger = ConfigurationManager.AppSettings["EnableSwagger"];
         public static void Register()
         {
-           // if (_EnableSwagger.Equals("true"))
-           // {
+            if (_EnableSwagger.Equals("true"))
+            {
                 GlobalConfiguration.Configuration
                 .EnableSwagger(c =>
                     {
@@ -24,7 +24,7 @@ namespace KKM.Repository.Host
                         c.OperationFilter<AddRequiredHeaderParameter>();
                     })
                 .EnableSwaggerUi(c => c.DisableValidator());
-            //}
+            }
         }
     }
 }
