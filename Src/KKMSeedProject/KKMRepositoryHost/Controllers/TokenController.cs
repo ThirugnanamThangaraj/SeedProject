@@ -20,15 +20,13 @@ namespace KKM.Repository.Host.Controllers
         }
 
         [HttpPost]
-        //[Route("Token")]
-        [AllowAnonymous]
+               [AllowAnonymous]
         public IHttpActionResult Authenticate(LoginRequest login)
         {
             if (login == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            //TODO: Validate credentials Correctly, this code is only for demo !!
-            var isCredentialValid = _libraryService.GetByName(login);
+             var isCredentialValid = _libraryService.GetByName(login);
             if (isCredentialValid.IsValid)
             {
                 var token = TokenGenerator.TokenGenerator.GenerateTokenJwt(login.Username);
