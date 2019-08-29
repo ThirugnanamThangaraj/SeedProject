@@ -11,14 +11,14 @@ namespace KKM.Repository.Repository
        public Result<List<User>> GetAll()
         {
             
-            return new Result<List<User>>(true, getUser(), "Success");
+            return new Result<List<User>>(true, GetUser(), "Success");
             
         }
 
         public Result<User> GetbyId(int id)
         {
 
-            User result = getUser().Where(x => x.UserId.Equals(id)).Select(x=>x).FirstOrDefault();
+            User result = GetUser().Where(x => x.UserId.Equals(id)).Select(x=>x).FirstOrDefault();
 
 
             return new Result<User>(true, result, "Success");
@@ -27,7 +27,7 @@ namespace KKM.Repository.Repository
 
 
 
-        private List<User> getUser()
+        private List<User> GetUser()
         {
             List<User> users = new List<User>();
             for (int i = 1; i <= 100; i++)
