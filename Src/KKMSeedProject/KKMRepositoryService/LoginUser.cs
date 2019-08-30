@@ -13,7 +13,7 @@ namespace KKM.Repository.Repository
     {
        public Result<LoginRequest> GetByName(LoginRequest loginRequest)
         {
-           var result = getUser().Where(x => x.Username.Equals(loginRequest.Username) &&  x.Password.Equals(loginRequest.Password)).Select(x => x).FirstOrDefault();
+           var result = GetUser().Where(x => x.Username.Equals(loginRequest.Username) &&  x.Password.Equals(loginRequest.Password)).Select(x => x).FirstOrDefault();
             if (result != null)
             { return new Result<LoginRequest>(true, result, "Success"); }
             else
@@ -22,7 +22,7 @@ namespace KKM.Repository.Repository
             }
         }
 
-        private List<LoginRequest> getUser()
+        private List<LoginRequest> GetUser()
         {
             List<LoginRequest> users = new List<LoginRequest>();
             for (int i = 1; i <= 3; i++)
