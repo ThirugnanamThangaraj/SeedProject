@@ -81,7 +81,10 @@ namespace KKM.Repository.Host.TokenGenerator
         {
             if (expires != null)
             {
-                if (DateTime.UtcNow < expires) return true;
+                if (DateTime.UtcNow < expires)
+                {
+                    return true;
+                }
             }
             return false;
         }
